@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Verification Required - SECURITY DEMO</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 20px; }
+        .warning { background: #ff4444; color: white; padding: 15px; text-align: center; font-weight: bold; margin-bottom: 20px; }
+        .container { background: white; padding: 40px; max-width: 400px; margin: 0 auto; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        input[type="text"], input[type="password"] { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; box-sizing: border-box; }
+        button { background: #0078d4; color: white; padding: 14px 20px; border: none; cursor: pointer; width: 100%; font-size: 16px; }
+        button:hover { opacity: 0.8; }
+        .educational { display: none; background: #e7f3ff; padding: 20px; margin-top: 20px; border-left: 4px solid #0078d4; }
+        .footer { text-align: center; margin-top: 20px; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="warning">⚠️ CYBERSECURITY TRAINING DEMO - NOT A REAL LOGIN ⚠️</div>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h2 style="color: #0078d4; margin: 0;">Account Security</h2>
+            <p style="color: #666;">Verify your identity to continue</p>
+        </div>
+
+        <form onsubmit="showEducationalMessage(event)">
+            <label><strong>Email Address</strong></label>
+            <input type="text" id="email" required placeholder="your.email@example.com">
+            
+            <label style="margin-top: 15px; display: block;"><strong>Password</strong></label>
+            <input type="password" id="password" required placeholder="Enter your password">
+            
+            <button type="submit">Secure Login</button>
+        </form>
+
+        <div class="educational" id="eduContent"></div>
+
+        <div class="footer">
+            <p>Terms of Use | Privacy & Cookies</p>
+            <p style="color: #ff4444; font-weight: bold;">EDUCATIONAL SECURITY DEMONSTRATION</p>
+        </div>
+    </div>
+
+    <script>
+        function showEducationalMessage(event) {
+            event.preventDefault();
+            var email = document.getElementById('email').value;
+            var eduContent = document.getElementById('eduContent');
+            
+            eduContent.innerHTML = `
+                <h3>🎯 Educational Moment - This Was a Phishing Demo!</h3>
+                <p><strong>In a real attack, your credentials would now be stolen.</strong></p>
+                <p>You entered: <code>${email}</code> (This was NOT saved)</p>
+                <hr>
+                <h4>🔍 Red Flags to Recognize:</h4>
+                <ul>
+                    <li><strong>URL:</strong> Check the address bar - not a legitimate company domain</li>
+                    <li><strong>Urgency:</strong> Creates false security pressure</li>
+                    <li><strong>Warning Banner:</strong> Real sites don't have security warnings</li>
+                    <li><strong>Generic Design:</strong> Lacks company-specific branding</li>
+                </ul>
+                <h4>💡 Security Tips:</h4>
+                <ul>
+                    <li>Always verify URLs before logging in</li>
+                    <li>Bookmark important sites instead of clicking links</li>
+                    <li>Enable multi-factor authentication</li>
+                    <li>When unsure, navigate to websites directly</li>
+                </ul>
+                <p><a href="debrief.html" style="color: #0078d4;">Click here for more security information →</a></p>
+            `;
+            eduContent.style.display = 'block';
+            eduContent.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        setTimeout(function() {
+            var eduContent = document.getElementById('eduContent');
+            if (eduContent.innerHTML === '') {
+                eduContent.innerHTML = '<p><strong>Demo Hint:</strong> This is a cybersecurity training page. Try "submitting" the form to see the educational content!</p>';
+                eduContent.style.display = 'block';
+            }
+        }, 10000);
+    </script>
+</body>
+</html>
